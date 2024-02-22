@@ -16,7 +16,8 @@ Short code snippet to play Hangman.
 To develop a programme to play Hangman against.  
 
 ### What did I learn?
-In progress
+`if` statements, `for` and `while` loops.  
+
 
 ## Installation instructions
 N/A
