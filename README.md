@@ -2,28 +2,30 @@
 Repo for AI Core Hangman Project code
 
 
-## Project Title: Python Hangman
+# Project Title: Python Hangman
 
 
-### Table of Contents, if the README file is long
+## Table of Contents, if the README file is long
 N/A
 
-## A description of the project: what it does, the aim of the project, and what you learned
+## Project Description
+### What does it do? 
 Short code snippet to play Hangman.  
 
-Aim - To develop a programme to play Hangman against.  
+### Aim
+To develop a programme to play Hangman against.  
 
-What did I learn?
+### What did I learn?
+In progress
 
-
-### Installation instructions
+## Installation instructions
 N/A
 
-### Usage instructions
+## Usage instructions
 N/A
 
-### File structure of the project
+## File structure of the project
 N/A
 
-### License information
+## License information
 N/A
