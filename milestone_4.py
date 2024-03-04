@@ -1,16 +1,16 @@
-import random 
+import random
 
-class Hangman: 
+class Hangman:
     def __init__(self, word_list, num_lives=5):
-        self.word_list = ['Banana', 'Strawberry', 'Grape', 'Mango', 'Satsuma']
+        self.word_list = word_list
         self.num_lives = int(num_lives)
-        self.word = random.choice(word_list)
-        self.word_guessed=len(word) * ['_']
+        self.word = random.choice(self.word_list)
+        self.word_guessed = len(self.word) * ['_']
         self.num_letters = int(len(self.word))
-        self.list_of_guesses=list_of_guesses or []
-    
+        self.list_of_guesses = []
 
-    def ask_for_input():
+
+    def ask_for_input(self):
         while True:
             guess = input('Please guess a letter: ')
             if len(guess) != 1 or guess.isdigit():
@@ -21,33 +21,49 @@ class Hangman:
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
 
+            # Print the current state of the word after each guess
+            print('Current word:', ' '.join(self.word_guessed))
+            print('Unguessed letters:', ' '.join(['_' if letter not in self.list_of_guesses else '' for letter in self.word]))
 
-    def check_guess(self, guess): 
-        # Function for checking if the guessed letter input by the user is in the word 
+            if '_' not in self.word_guessed:
+                print('Congratulations. You won the game!')
+                break
+            elif self.num_lives == 0:
+                print('You lost!')
+                break
+            elif self.num_letters == 0:
+                break  # added this line to break out when all letters are guessed
+
+    def check_guess(self, guess):
         if guess.lower() in self.word.lower():
             print(f'Good guess! "{guess}" is in the word.')
-
-            # Loop through each letter in the word
             for i in range(len(self.word)):
                 letter = self.word[i]
-
-                # Check if the letter is equal to the guess
                 if letter.lower() == guess.lower():
-                    # Replace the corresponding "_" in word_guessed with the guess
                     self.word_guessed[i] = guess
-
-            # Reduce the variable num_letters by 1
             self.num_letters -= 1
         else:
-            # Reduce num_lives by 1
             self.num_lives -= 1
-
-            # Print a message for incorrect guess
             print(f'Sorry, "{guess}" is not in the word.')
-
-            # Print the number of lives left
             print(f'You have {self.num_lives} lives left.')
 
+def play_game(word_list):
+    num_lives = 5
+    game = Hangman(word_list, num_lives)
+
+    while True:
+        if game.num_lives == 0:
+            print('You lost!')
+            break
+        elif game.num_letters > 0:
+            game.ask_for_input()
+        else:
+            print('Congratulations. You won the game!')
+            break
+
+
+word_list = ['Banana', 'Strawberry', 'Grape', 'Mango', 'Satsuma']
+play_game(word_list)
 
 
 
